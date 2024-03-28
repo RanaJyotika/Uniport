@@ -94,10 +94,12 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
                   : "text-zinc-400"
               )}
             >
+
               <div className="flex items-center flex-1">
                 <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
                 {route.label}
               </div>
+
             </Link>
           ))}
         </div>
