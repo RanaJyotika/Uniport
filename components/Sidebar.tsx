@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import {
   Code,
+  Gem,
   ImageIcon,
   LayoutDashboard,
   MessageSquare,
@@ -15,6 +16,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import FreeCounter from "./free-counter";
+import { Badge } from "./ui/badge";
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -56,6 +58,12 @@ const routes = [
     href: "/code",
   },
   {
+    label: "Gemini",
+    icon: Gem,
+    color: "text-pink-700",
+    href: "/gemini",
+  },
+  {
     label: "Settings",
     icon: Settings,
     href: "/settings",
@@ -94,12 +102,13 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
                   : "text-zinc-400"
               )}
             >
-
               <div className="flex items-center flex-1">
                 <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
                 {route.label}
+                {route.href === "/gemini" && (
+                  <Badge className="ml-3 bg-pink-500 animate-pulse">new</Badge>
+                )}
               </div>
-
             </Link>
           ))}
         </div>
