@@ -15,7 +15,6 @@ import Heading from "@/components/heading";
 import Loader from "@/components/loader";
 import Empty from "@/components/empty";
 
-
 const MusicPage = () => {
   const router = useRouter();
   const [music, setMusic] = useState<string>();
@@ -92,15 +91,12 @@ const MusicPage = () => {
               <Loader />
             </div>
           )}
-          {!music && !isLoading && (
-            <Empty label="No music generated." />
-          )}
-          {music &&(
+          {!music && !isLoading && <Empty label="No music generated." />}
+          {music && (
             <audio controls className="w-full mt-8">
-                <source  src={music}/>
+              <source src={music} />
             </audio>
           )}
-
         </div>
       </div>
     </div>

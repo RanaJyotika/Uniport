@@ -1,6 +1,7 @@
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/sidebar";
+import Navbar from "@/components/navbar";
+import Sidebar from "@/components/Sidebar";
 import { getApiLimitCount } from "@/lib/api-limit";
+import NextTopLoader from "nextjs-toploader";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const apiLimitCount = await getApiLimitCount();
@@ -12,7 +13,8 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
       </div>
 
       <main className="md:pl-72">
-        <Navbar />
+        <NextTopLoader />
+        <Navbar apiLimitCount={apiLimitCount} />
         {children}
       </main>
     </div>

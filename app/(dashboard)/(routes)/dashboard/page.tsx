@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Code,
+  Gem,
   ImageIcon,
   MessageSquare,
   Music,
@@ -13,6 +14,13 @@ import {
 import { useRouter } from "next/navigation";
 
 const tools = [
+  {
+    label: "Google's Gemini",
+    icon: Gem,
+    href: "/gemini",
+    color: "text-pink-500",
+    bgColor: "bg-pink-500/10",
+  },
   {
     label: "Conversation",
     icon: MessageSquare,
