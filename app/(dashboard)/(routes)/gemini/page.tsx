@@ -20,8 +20,10 @@ import Empty from "@/components/empty";
 
 import { formSchema } from "./constants";
 import { Gem } from "lucide-react";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const CodePage = () => {
+  const proModal = useProModal();
   const router = useRouter();
   const [messages, setMessages] = useState<
     CreateChatCompletionRequestMessage[]
@@ -58,8 +60,8 @@ const CodePage = () => {
 
       form.reset();
     } catch (error: any) {
-      if (error?.response?.status === 403) {
-      } else {
+      if(error?.response?.status === 403) {
+        proModal.onOpen();
       }
     } finally {
       router.refresh();

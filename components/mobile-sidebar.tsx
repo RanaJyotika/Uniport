@@ -6,11 +6,11 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import Sidebar from "./Sidebar";
 
-interface SidebarProps {
+interface MobileSidebarProps {
   apiLimitCount: number;
 }
 
-const MobileSidebar = ({ apiLimitCount }: SidebarProps) => {
+const MobileSidebar = ({ apiLimitCount }: MobileSidebarProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
