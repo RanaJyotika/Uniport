@@ -1,4 +1,5 @@
 import { checkApiLimit, increamentApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import Replicate from "replicate";
@@ -22,9 +23,11 @@ export async function POST(req: Request) {
     }
 
     const freeTrial = await checkApiLimit();
+    const isPro = await checkSubscription();
 
-    if (!freeTrial)
+    if (!freeTrial && !isPro)
       return new NextResponse("free trial has expired", { status: 403 });
+
 
       const response = await replicate.run("riffusion/riffusion:8cf61ea6c56afd61d8f5b9ffd14d7c216c0a93844ce2d82ac1c9ecc9c7f24e05", { input: {
         prompt_a: prompt
@@ -32,7 +35,8 @@ export async function POST(req: Request) {
     }
     );    
 
-    await increamentApiLimit();
+    if(!isPro)
+      await increamentApiLimit();
 
     return NextResponse.json(response);
   } catch (error) {

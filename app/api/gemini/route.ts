@@ -4,6 +4,7 @@ import OpenAI from "openai";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { checkApiLimit, increamentApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 // Access your API key as an environment variable (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -38,9 +39,11 @@ export async function POST(req: Request) {
     }
 
     const freeTrial = await checkApiLimit();
+    const isPro = await checkSubscription();
 
-    if (!freeTrial)
+    if (!freeTrial && !isPro)
       return new NextResponse("free trial has expired", { status: 403 });
+
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -51,7 +54,8 @@ export async function POST(req: Request) {
     const response = result.response;
     const text = response.text();
     
-    await increamentApiLimit();
+    if(!isPro)
+      await increamentApiLimit();
 
     return NextResponse.json(text);
   } catch (error) {
