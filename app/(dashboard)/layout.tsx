@@ -15,7 +15,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
       </div>
 
       <main className="md:pl-72">
-        <NextTopLoader />
+        <NextTopLoader showSpinner={false} />
         <Navbar />
         {children}
       </main>
