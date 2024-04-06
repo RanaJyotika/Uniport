@@ -49,10 +49,7 @@ const CodePage = () => {
         messages: newMessages,
       });
 
-      console.log("all messages 1", messages);
       setMessages((current) => [...current, userMessage, response.data]);
-
-      console.log("all messages 2", messages);
 
       form.reset();
     } catch (error: any) {
