@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CreateChatCompletionRequestMessage } from "openai/resources/chat";
-
 import BotAvatar from "@/components/bot-avatar";
 import Heading from "@/components/heading";
 import { Button } from "@/components/ui/button";
@@ -17,10 +16,10 @@ import { cn } from "@/lib/utils";
 import Loader from "@/components/loader";
 import UserAvatar from "@/components/user-avatar";
 import Empty from "@/components/empty";
-
 import { formSchema } from "./constants";
 import { Gem } from "lucide-react";
 import { useProModal } from "@/hooks/use-pro-modal";
+import toast from "react-hot-toast";
 
 const CodePage = () => {
   const proModal = useProModal();
@@ -28,7 +27,6 @@ const CodePage = () => {
   const [messages, setMessages] = useState<
     CreateChatCompletionRequestMessage[]
   >([]);
-  const [response, setResponse] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,21 +45,21 @@ const CodePage = () => {
       };
       const newMessages = [...messages, userMessage];
 
-      // console.log(newMessages[newMessages.length - 1]);
-      // console.log("userMessage", userMessage);
-
       const response = await axios.post("/api/gemini", {
         messages: newMessages,
       });
 
-      setResponse(response.data);
-
+      console.log("all messages 1", messages);
       setMessages((current) => [...current, userMessage, response.data]);
+
+      console.log("all messages 2", messages);
 
       form.reset();
     } catch (error: any) {
-      if(error?.response?.status === 403) {
+      if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong!");
       }
     } finally {
       router.refresh();
@@ -142,8 +140,9 @@ const CodePage = () => {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                {message.content}
-                {!message.content && response}
+                <p className="text-sm">
+                  {message.content ? message.content : message}
+                </p>
               </div>
             ))}
           </div>
