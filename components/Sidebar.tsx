@@ -72,10 +72,10 @@ const routes = [
 
 interface SidebarProps {
   apiLimitCount: number;
-  isPro: boolean,
+  isPro: boolean;
 }
 
-const Sidebar = ({ apiLimitCount = 0, isPro = false, }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
@@ -107,16 +107,14 @@ const Sidebar = ({ apiLimitCount = 0, isPro = false, }: SidebarProps) => {
                 <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
                 {route.label}
                 {route.href === "/gemini" && (
-                  <Badge className="ml-3 bg-pink-500 animate-pulse">new</Badge>
+                  <Badge className="ml-3 bg-pink-500 animate-pulse">free</Badge>
                 )}
               </div>
             </Link>
           ))}
         </div>
       </div>
-      <FreeCounter 
-      isPro = {isPro}
-      apiLimitCount={apiLimitCount} />
+      <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   );
 };
