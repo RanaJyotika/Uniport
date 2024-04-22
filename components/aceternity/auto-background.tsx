@@ -5,8 +5,12 @@ import React from "react";
 import { AuroraBackground } from "../ui/aurora-background";
 import { MoveRight } from "lucide-react";
 import TypewriterComponent from "typewriter-effect";
+import Link from "next/link";
+import { useAuth } from "@clerk/nextjs";
 
 export function AceternityAuroraBackground() {
+  const { isSignedIn } = useAuth();
+
   return (
     <AuroraBackground>
       <motion.div
@@ -40,10 +44,13 @@ export function AceternityAuroraBackground() {
         <div className="font-extralight text-base md:text-4xl text-neutral-200 py-4">
           Create content using AI 10X faster.
         </div>
-        <button className="bg-white rounded-full w-fit flex items-center text-black px-4 py-2">
-          Start Generating for Free
-          <MoveRight className="ml-2 animate-pulse" />
-        </button>
+
+        <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+          <button className="bg-white rounded-full w-fit flex items-center text-black px-4 py-2">
+            Start Generating for Free
+            <MoveRight className="ml-2 animate-pulse" />
+          </button>
+        </Link>
       </motion.div>
     </AuroraBackground>
   );

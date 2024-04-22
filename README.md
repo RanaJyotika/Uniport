@@ -158,7 +158,7 @@ And at the end of the day, it is just an extention of ReactJs.😀
 <summary><code>Core Concepts implemented in Uniport</code></summary>
 
 ```
-Following are the concepts of NextJS used in devforces-
+Following are the concepts of NextJS used in Uniport-
 ➡️ File and Folder based routing
 ➡️ Client and server components
 ➡️ Routing and special NextJS files
