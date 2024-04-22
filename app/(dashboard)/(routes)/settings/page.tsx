@@ -1,4 +1,4 @@
-import Heading from "@/components/Heading";
+import Heading from "@/components/header";
 import { Settings } from "lucide-react";
 
 import { checkSubscription } from "@/lib/subscription";
