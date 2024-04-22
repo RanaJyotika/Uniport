@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CreateChatCompletionRequestMessage } from "openai/resources/chat";
 import BotAvatar from "@/components/bot-avatar";
-import Heading from "@/components/heading";
+import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";

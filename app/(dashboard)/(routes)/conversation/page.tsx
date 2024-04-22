@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CreateChatCompletionRequestMessage } from "openai/resources/chat";
 import { cn } from "@/lib/utils";
-import Heading from "@/components/heading";
+import Heading from "@/components/Heading";
 import Loader from "@/components/loader";
 import Empty from "@/components/empty";
 import UserAvatar from "@/components/user-avatar";

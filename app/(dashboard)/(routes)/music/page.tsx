@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Heading from "@/components/heading";
+import Heading from "@/components/Heading";
 import Loader from "@/components/loader";
 import Empty from "@/components/empty";
 import { useProModal } from "@/hooks/use-pro-modal";

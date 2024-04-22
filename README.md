@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a href="https://uniport.vercel.app/" target="_blank">
-      <img src="https://github.com/iAryanK/Uniport/blob/main/app/opengraph-image.png?raw=true" alt="Project Banner">
+      <img src="https://github.com/iAryanK/Uniport/blob/main/public/screenshots/landing.png?raw=true" alt="Project Banner">
     </a>
   <br />
 

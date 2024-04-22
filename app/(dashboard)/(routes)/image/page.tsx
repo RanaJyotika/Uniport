@@ -7,7 +7,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Download, ImageIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import Heading from "@/components/heading";
+import Heading from "@/components/Heading";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardFooter } from "@/components/ui/card";
