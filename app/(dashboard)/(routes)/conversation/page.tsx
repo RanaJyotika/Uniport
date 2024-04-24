@@ -11,9 +11,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { CreateChatCompletionRequestMessage } from "openai/resources/chat";
+import { CreateChatCompletionRequestMessage } from "openai/resources/chat/completions";
 import { cn } from "@/lib/utils";
-import Heading from "@/components/heading";
+import Heading from "@/components/header";
 import Loader from "@/components/loader";
 import Empty from "@/components/empty";
 import UserAvatar from "@/components/user-avatar";
@@ -115,7 +115,7 @@ const ConversationPage = () => {
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
               <div
-                key={message.content}
+                key={message.content?.toString()}
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   message.role === "user"
@@ -124,7 +124,7 @@ const ConversationPage = () => {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">{message.content}</p>
+                <p className="text-sm">{message.content?.toString()}</p>
               </div>
             ))}
           </div>
